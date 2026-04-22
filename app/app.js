@@ -15,10 +15,16 @@ app.get('/api/map-data', async (c) => {
                 statistics: item.statistics
             };
         });
+        const cleanDataForData = data.data.map(item => {
+            return {
+                lat: lat,
+                lng: lng
+            }
+        })
         
         return c.json({
             success: true,
-            content: cleanData,
+            data: cleanData,
             api_by: "HosinoNeko"
         });
         }
