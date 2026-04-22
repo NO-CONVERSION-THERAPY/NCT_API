@@ -15,10 +15,12 @@ app.get('/api/map-data', async (c) => {
                 statistics: item.statistics
             };
         });
-        const cleanDataForData = data.data.map(item => {
+
+        const dataData = data.data
+        const cleanDataForData = dataData.map(item => {
             return {
-                lat: lat,
-                lng: lng
+                lat: item.lat,
+                lng: item.lng
             }
         })
         
