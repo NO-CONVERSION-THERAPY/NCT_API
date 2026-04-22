@@ -9,15 +9,16 @@ app.get('/api/map-data', async (c) => {
         
         const data = await response.json();
 
-        const cleanData = data.map(item => {
+        const statisticsData = data.map(item => {
             return {
-                name: item.name,
-                statistics: item.statistics
+                schoolNum: item.schoolNum,
+                avg_age: item.avg_age,
+                formNum:item.formNum,
+                statistics: item.statistics,
+                statisticsForm: item.statisticsForm
             };
         });
-
-        const dataData = data.data
-        const cleanDataForData = dataData.map(item => {
+        const cleanDataForData = data.map(item => {
             return {
                 lat: item.lat,
                 lng: item.lng
@@ -26,7 +27,7 @@ app.get('/api/map-data', async (c) => {
         
         return c.json({
             success: true,
-            data: cleanData,
+            data: cleanDataForData,
             api_by: "HosinoNeko"
         });
         }
