@@ -16,8 +16,3 @@ export default {
     return await handler(request, env, ctx);
   }
 };
-
-const port = 3000
-app.listen(port, () => {
-    console.log(`server is start at the prot: ${port}`)
-})
