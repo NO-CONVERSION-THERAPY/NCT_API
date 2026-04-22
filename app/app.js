@@ -14,7 +14,8 @@ app.get('/api/map-data', async (req, res) => {
     const data = await response.json();
     
     res.json({
-      content: data
+      content: data,
+      api_by: "HosinoNeko"
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
