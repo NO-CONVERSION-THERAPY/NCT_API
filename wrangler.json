@@ -1,5 +1,5 @@
 {
-  "name": "nct-data-api",
+  "name": "neo-api-test",
   "main": "app/app.js",
   "compatibility_date": "2026-04-22",
   "compatibility_flags": [
