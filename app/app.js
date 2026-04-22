@@ -26,7 +26,7 @@ app.get('/api/map-data', async (c) => {
         
         return c.json({
             success: true,
-            content: cleanData,
+            content: data,
             api_by: "HosinoNeko"
         });
         }
