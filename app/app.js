@@ -19,7 +19,6 @@ app.get('/api/map-data', async (c) => {
             };
         });
 
-        const 
         const cleanDataForData = data.data.map(item => {
             return {
                 name: item['學校名稱'],
