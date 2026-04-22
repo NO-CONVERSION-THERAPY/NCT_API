@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 const app = new Hono();
 
-app.get('/fetch-gas-data', async (req, res) => {
+app.get('/api/map-data', async (req, res) => {
   const gasUrl = c.env.GAS_URL;
   
   try {
