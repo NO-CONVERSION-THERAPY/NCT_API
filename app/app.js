@@ -12,9 +12,21 @@ app.get('/api/map-data', async (c) => {
         }
         
         const data = await response.json();
+
+        const cleanData = data.map(item => {
+            return {
+                name: item.name,
+                statistics: item.statistics,
+                data: {
+                lat: item.lat,
+                lng: item.lng
+                }
+            };
+        });
         
         return c.json({
-            content: data,
+            success: true,
+            content: cleanData,
             api_by: "HosinoNeko"
         });
         }
