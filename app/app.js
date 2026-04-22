@@ -9,15 +9,13 @@ app.get('/api/map-data', async (c) => {
         
         const data = await response.json();
 
-        const statisticsData = data.map(item => {
-            return {
-                schoolNum: item.schoolNum,
-                avg_age: item.avg_age,
-                formNum:item.formNum,
-                statistics: item.statistics,
-                statisticsForm: item.statisticsForm
-            };
-        });
+        const statisticsData = {
+            schoolNum: data.schoolNum,
+            avg_age: data.avg_age,
+            formNum:data.formNum,
+            statistics: data.statistics,
+            statisticsForm: data.statisticsForm
+        };
 
         const cleanDataForData = data.data.map(item => {
             return {
