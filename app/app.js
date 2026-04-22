@@ -1,20 +1,23 @@
 import express from 'express';
+import serverless from 'serverless-http';
 
 const app = express();
 
-app.get('/', (req,res) => {
-    res.json('[]')
-})
+app.get('/', (req, res) => {
+  res.json({ message: "NCT Data API 運行成功！" });
+});
+
+// 使用 serverless 適配器包裝 app
+const handler = serverless(app);
+
+export default {
+  async fetch(request, env, ctx) {
+    // 讓適配器處理轉換
+    return await handler(request, env, ctx);
+  }
+};
 
 const port = 3000
 app.listen(port, () => {
     console.log(`server is start at the prot: ${port}`)
 })
-
-export default {
-  async fetch(request, env, ctx) {
-    // 這裡通常需要一個適配器，或者如果是 Pages 項目則不同
-    // 但核心點是必須有 export default
-    return app(request, env, ctx);
-  }
-};
