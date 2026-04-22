@@ -18,11 +18,15 @@ app.get('/api/map-data', async (c) => {
                 statisticsForm: item.statisticsForm
             };
         });
-        const cleanDataForData = data.map(item => {
+
+        const 
+        const cleanDataForData = data.data.map(item => {
             return {
-                name:item['學校名稱'],
-                lat: item.lat,
-                lng: item.lng
+                name: item['學校名稱'],
+                addr: item['學校地址'],
+                else: item['其他'],
+                lat: item.lat ? Number(item.lat) : 0,
+                lng: item.lng ? Number(item.lat) : 0
             }
         })
         
