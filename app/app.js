@@ -18,5 +18,3 @@ export default {
     return app(request, env, ctx);
   }
 };
-
-module.exports = app;
