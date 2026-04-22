@@ -1,8 +1,24 @@
 import { Hono } from 'hono';
 const app = new Hono();
 
-app.get('/', (c) => {
-  return c.json({ message: "NCT Data API 運行成功！(Hono 版)" });
+app.get('/fetch-gas-data', async (req, res) => {
+  const gasUrl = c.env.GAS_URL;
+  
+  try {
+    const response = await fetch(gasUrl);
+    
+    if (!response.ok) {
+      throw new Error(`GAS get err: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    res.json({
+      content: data
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
-export default app; // 就這麼簡單，不需要適配器，不需要 fetch 封裝
+export default app;
