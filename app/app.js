@@ -9,14 +9,6 @@ app.get('/api/map-data', async (c) => {
         
         const data = await response.json();
 
-        const statisticsData = {
-            schoolNum: data.schoolNum,
-            avg_age: data.avg_age,
-            formNum:data.formNum,
-            statistics: data.statistics,
-            statisticsForm: data.statisticsForm
-        };
-
         const cleanDataForData = data.data.map(item => {
             return {
                 name: item['學校名稱'],
@@ -29,8 +21,15 @@ app.get('/api/map-data', async (c) => {
         
         return c.json({
             success: true,
-            statisticsData,
+
+            schoolNum: data.schoolNum,
+            avg_age: data.avg_age,
+            formNum:data.formNum,
+            statistics: data.statistics,
+            statisticsForm: data.statisticsForm,
+
             data: cleanDataForData,
+
             api_by: "HosinoNeko"
         });
         }
