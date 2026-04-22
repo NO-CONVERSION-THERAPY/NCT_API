@@ -20,6 +20,7 @@ app.get('/api/map-data', async (c) => {
         });
         const cleanDataForData = data.map(item => {
             return {
+                name:item['學校名稱'],
                 lat: item.lat,
                 lng: item.lng
             }
@@ -27,6 +28,7 @@ app.get('/api/map-data', async (c) => {
         
         return c.json({
             success: true,
+            statisticsData,
             data: cleanDataForData,
             api_by: "HosinoNeko"
         });
