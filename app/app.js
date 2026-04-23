@@ -50,7 +50,8 @@ app.get('/api/map-data', async (c) => {
 });
 
 app.get('/' , async (c) => {
-    const html = await fs.readFile('../index.html', 'utf-8')
+    const filePath = path.join(__dirname, '..', 'index.html');
+    const html = await fs.readFile(filePath, 'utf-8')
     return c.html(html)
 });
 
