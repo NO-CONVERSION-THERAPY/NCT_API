@@ -1,5 +1,7 @@
 import { Hono } from 'hono';
 import { serveStatic } from '@hono/node-server/serve-static'
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 const app = new Hono();
 
@@ -24,7 +26,7 @@ app.get('/api/map-data', async (c) => {
                 inputType: item['請問您是什麽身份？'],
                 else: item['其他'],
                 lat: item.lat ? Number(item.lat) : 0,
-                lng: item.lng ? Number(item.lat) : 0
+                lng: item.lng ? Number(item.lng) : 0
             }
         })
         
@@ -47,7 +49,7 @@ app.get('/api/map-data', async (c) => {
     }
 });
 
-app.get('/' , (c) => {
+app.get('/' , async (c) => {
     const html = await fs.readFile('../index.html', 'utf-8')
     return c.html(html)
 });
