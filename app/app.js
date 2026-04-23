@@ -1,7 +1,8 @@
 import { Hono } from 'hono';
-import { serveStatic } from '@hono/node-server/serve-static'
+//import { serveStatic } from '@hono/node-server/serve-static'
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { cors } from 'hono/cors';
 
 const app = new Hono();
 
