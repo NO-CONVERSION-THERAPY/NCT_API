@@ -5,6 +5,8 @@ import path from 'node:path';
 
 const app = new Hono();
 
+app.use('/api/*', cors());
+
 app.get('/api/map-data', async (c) => {
   const gasUrl = c.env.GAS_URL;
   
