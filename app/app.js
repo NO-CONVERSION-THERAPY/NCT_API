@@ -1,5 +1,8 @@
 import { Hono } from 'hono';
+import { serveStatic } from '@hono/node-server/serve-static'
+
 const app = new Hono();
+app.use('/static/*', serveStatic({ root: './public' }))
 
 app.get('/api/map-data', async (c) => {
   const gasUrl = c.env.GAS_URL;
@@ -43,6 +46,11 @@ app.get('/api/map-data', async (c) => {
     catch (error) {
         return c.json({ error: error.message }, 500);
     }
+});
+
+app.get('/' , (c) => {
+    const html = await fs.readFile('index.html', 'utf-8')
+    return c.html(html)
 });
 
 export default app;
