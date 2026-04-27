@@ -52,10 +52,7 @@ app.get('/api/map-data', async (c) => {
     }
 });
 
-app.get('/' , async (c) => {
-    const filePath = path.join(__dirname, '..', 'index.html');
-    const html = await fs.readFile(filePath, 'utf-8')
-    return c.html(html)
+app.get('/' , (c)=> {return c.text('在没有黑暗的地方 我们终将重逢')
 });
 
 export default app;
