@@ -12,7 +12,10 @@ app.get('/api/map-data', async (c) => {
   const gasUrl = c.env.GAS_URL;
   
     try {
-        const response = await fetch(gasUrl);
+        const PageNum = c.req.query('pageNum') || 0;
+        const mapStyle = c.req.query('mapStyle') || 'false';
+        const aPageNum = c.req.query('aPageNum') || 20;
+        const response = await fetch(gasUrl+`?pageNum=${PageNum}&mapStyle=${mapStyle}&aPageDataNum=${aPageNum}`);
         
         const data = await response.json();
 
@@ -42,6 +45,7 @@ app.get('/api/map-data', async (c) => {
             statistics: data.statistics,
             statisticsForm: data.statisticsForm,
 
+            dataPage: data.dataPage || null,
             data: cleanDataForData,
 
             api_by: `HosinoNeko\n在没有黑暗的地方 我们终将重逢`
