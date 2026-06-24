@@ -11,6 +11,7 @@
 ## 食用方法
 
 [NCT_VIEW](https://github.com/NO-CONVERSION-THERAPY/NCT_VIEW)是HosinoNeko製作的一個demo，使用Vue編寫，可直接食用或者作爲參考。
+*注：該項目暫時過期*
 
 api鏈接在[這裏](https://nct.hosinoeiji.workers.dev/api/map-data)
 
