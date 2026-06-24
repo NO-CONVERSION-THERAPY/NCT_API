@@ -13,9 +13,9 @@ app.get('/api/map-data', async (c) => {
   
     try {
         const PageNum = c.req.query('pageNum') || 0;
-        const mapStyle = c.req.query('mapStyle') || 'false';
+        const mode = c.req.query('mode') || 'list';
         const aPageNum = c.req.query('aPageNum') || 20;
-        const response = await fetch(gasUrl+`?pageNum=${PageNum}&mapStyle=${mapStyle}&aPageDataNum=${aPageNum}`);
+        const response = await fetch(gasUrl+`?pageNum=${PageNum}&mode=${mode}&aPageDataNum=${aPageNum}`);
         
         const data = await response.json();
 
