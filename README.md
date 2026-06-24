@@ -14,6 +14,17 @@
 
 api鏈接在[這裏](https://nct.hosinoeiji.workers.dev/api/map-data)
 
+關於使用方法，我們需要用到「查詢字串」
+
+| 字串名稱 | 釋義 | 類型 | 值 | 默認值 | 值註解 |
+| --- | --- | --- | --- | --- | --- |
+| pageNum | 現在所在頁數 | Number | 1、２、３ | 0 |
+| aPageNum | 一頁顯示多少條數據 | Number | 1、２、３ | 20 | 當超過120時，腳本將重新設定為20 |
+| mode | 資料類型 | String | list | list | 只將該頁的數據返回回來 |
+| | | | map | list | 將所有數據全部get回來，用於地圖、前端檢索等，但是速度很慢 |
+
+比如：```?pageNum=8&aPageNum=20&mode=list```
+
 ### 結構
 
 輸出的json數據為以下結構：
@@ -37,6 +48,10 @@ api鏈接在[這裏](https://nct.hosinoeiji.workers.dev/api/map-data)
             "count": 1919810
         }//其他省份
     ],
+    "dataPage": {//頁數資訊
+        "allPage": 48,//總共有奪少頁
+        "nowPage": 0//現在所在的頁數
+    },
     "data": [//主要數據
         {
             "name": "正苗启德青少年特训学校",//機構名稱
