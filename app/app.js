@@ -12,6 +12,7 @@ app.get('/api/map-data', async (c) => {
   const gasUrl = c.env.GAS_URL;
   
     try {
+        //获取参数和设置默认值
         const PageNum = c.req.query('pageNum') || 0;
         const mode = c.req.query('mode') || 'list';
         const aPageNum = c.req.query('aPageNum') || 20;
@@ -19,7 +20,7 @@ app.get('/api/map-data', async (c) => {
         
         const data = await response.json();
 
-        const cleanDataForData = data.data.map(item => {
+        const cleanDataForData = data.data.map(item => {//数据名称重组
             return {
                 name: item['學校名稱'],
                 addr: item['學校地址'],
@@ -36,7 +37,7 @@ app.get('/api/map-data', async (c) => {
             }
         })
         
-        return c.json({
+        return c.json({//数据返回和清洗
             success: true,
             last_synced: data.LastSynced,
             schoolNum: data.SchoolNum,
