@@ -22,6 +22,7 @@ app.get('/api/map-data', async (c) => {
 
         const cleanDataForData = data.data.map(item => {//数据名称重组
             return {
+                timeStamp: item['時間戳記'],
                 name: item['學校名稱'],
                 addr: item['學校地址'],
                 province: item['省份'],
