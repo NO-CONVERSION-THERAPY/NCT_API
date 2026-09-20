@@ -32,7 +32,9 @@ app.get('/api/map-data', async (c) => {
                 scandal: item['學校的醜聞'],
                 contact: item['學校的聯繫方式'],
                 inputType: item['請問您是什麽身份？'],
-                else: item['其他'],
+                isBatch: item['請問您是什麽身份？'] == null || item['請問您是什麽身份？'] === '',
+                else: item['其他'],//旧版，慢慢淘汰
+                other: item['其他'],
                 lat: item.lat ? Number(item.lat) : 0,
                 lng: item.lng ? Number(item.lng) : 0
             }
