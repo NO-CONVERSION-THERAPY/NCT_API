@@ -51,10 +51,11 @@ app.get('/api/map-data', async (c) => {
             data: cleanDataForData,
 
             api_by: `HosinoNeko\n在没有黑暗的地方 我们终将重逢`
-        }, 200 , {
-            'Cache-Control': 'public, max-age=300'
-        });
-        }
+        }//, 200 , {
+        //    'Cache-Control': 'public, max-age=300'
+        //}
+        );
+    }
     catch (error) {
         return c.json({ error: error.message }, 500);
     }
